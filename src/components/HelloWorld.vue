@@ -28,6 +28,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
     <div>我是1.1</div>
+    <div>我是1.2</div>
   </div>
 </template>
 
