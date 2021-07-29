@@ -1,31 +1,28 @@
 <!--
- * @Description: 
+ * @Description: 强提醒动画按钮
  * @Author: zhoulx
  * @Date: 2021-02-07 14:37:26
  * @LastEditors: zhoulx
- * @LastEditTime: 2021-02-08 09:13:16
+ * @LastEditTime: 2021-03-10 17:07:56
 -->
 <template>
   <div class="GifButton">
     <div class="blue-btn">
-      <div class="apply">申请起飞列表</div>
-      <transition name="name1">
+      <div 
+        :style="{left: count ? '10px': '18px'}"
+        class="apply">申请起飞列表</div>
+      <transition name="font">
         <div class="num"
-          v-if="count">{{count}}</div>
+          v-if="showAnimation">{{count || ''}}</div>
       </transition>
-      <transition name="name2">
+      <transition name="circle">
         <div class="num-bg"
-          v-if="count"></div>
+          v-if="showAnimation"></div>
       </transition>
     </div>
-    <transition name="name3">
-      <div class="bg-btn" v-if="count"></div>
+    <transition name="back">
+      <div class="bg-btn" v-if="showAnimation"></div>
     </transition>
-
-    <div class="add"
-      @click="count++">
-      点击加一
-    </div>
   </div>
 </template>
 
@@ -34,12 +31,31 @@ export default {
   name: "GifButton",
   data () {
     return {
-      count: 0
+      showAnimation: false
+    }
+  },
+  props:{
+    count: {
+      type: Number,
+      default: () => 0
     }
   },
   computed: {},
-  watch: {},
-  methods: {},
+  watch: {
+    count:{
+      handler(){
+        this.playAnimation();
+      }
+    }
+  },
+  methods: {
+    playAnimation(){
+      this.showAnimation = false;
+      this.$nextTick(() => {
+        this.showAnimation = true;
+      });
+    }
+  },
   mounted () { },
   components: {}
 }
@@ -48,7 +64,6 @@ export default {
 <style scoped >
 .GifButton {
   position: absolute;
-  left: 50px;
 }
 .blue-btn {
   width: 108px;
@@ -76,10 +91,6 @@ export default {
   left: 10px;
   z-index: 4;
 }
-.add {
-  position: absolute;
-  top: 52px;
-}
 .num {
   position: absolute;
   z-index: 7;
@@ -106,50 +117,59 @@ export default {
   color: tomato;
   background-color: tomato;
 }
-.name1-enter-to,
-.name1-leave-to {
-  animation: big 0.3s ease-in-out 0s 1 normal;
-  -webkit-animation: big 0.3s ease-in-out 0s 1 normal;
+.font-enter-to {
+  animation: fontChangeBig 2.6s ease 0s 1 normal;
+  -webkit-animation: fontChangeBig 2.6s ease 0s 1 normal;
 }
-.name2-enter-to,
-.name2-leave-to {
-  animation: big2 2s ease-in-out 0.3s 1 normal;
-  -webkit-animation: big2 2s ease-in-out 0.3s 1 normal;
+.circle-enter-to {
+  animation: circleAnimation 2.6s ease-in-out 0s 1 normal;
+  -webkit-animation: circleAnimation 2.6s ease-in-out 0s 1 normal;
 }
-.name3-enter-to,
-.name3-leave-to {
-  animation: big3 1s ease-in-out 1s 1 normal;
-  -webkit-animation: big3 1s ease-in-out 1s 1 normal;
+.back-enter-to {
+  animation: backAnimation 0.3s ease-in 0.7s 1 normal;
+  -webkit-animation: backAnimation 0.3s ease-in 0.7s 1 normal;
 }
-@-webkit-keyframes big {
+@-webkit-keyframes fontChangeBig {
+   0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1);
+  }
+  92% {
+    transform: scale(0.7);
+  }
+  96% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes circleAnimation {
   0% {
     transform: scale(0);
   }
-  10% {
-    transform: scale(0.2);
-  }
-  50% {
-    transform: scale(0.6);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@-webkit-keyframes big2 {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1);
-  }
-  50% {
+  30% {
     transform: scale(16);
   }
+  75% {
+    transform: scale(16);
+  }
+  92% {
+    transform: scale(0.7);
+  }
+  96% {
+    transform: scale(1.3);
+  }
   100% {
     transform: scale(1);
   }
 }
-@-webkit-keyframes big3 {
+@-webkit-keyframes backAnimation {
   0% {
     transform: scale(1);
   }
