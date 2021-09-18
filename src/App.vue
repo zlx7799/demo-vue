@@ -3,7 +3,7 @@
  * @Author: zhoulx
  * @Date: 2020-11-19 07:35:56
  * @LastEditors: zhoulx
- * @LastEditTime: 2021-06-07 19:27:17
+ * @LastEditTime: 2021-08-26 16:51:38
 -->
 <template>
   <div id="app">
@@ -17,7 +17,8 @@
     <!-- <throttle></throttle> -->
     <!-- <huan></huan> -->
     <!-- <loop></loop> -->
-    <threeD></threeD>
+    <!-- <threeD></threeD> -->
+    <list-frame width="1280px" :fps="24" :maxNumLimit="421" :loop="true"></list-frame>
 
   </div>
 </template>
@@ -32,7 +33,8 @@
 // import changeList from './components/changeList.vue'
 // import modelVideo from './components/model-video.vue'
 // import throttle from './components/throttle.vue'
-import threeD from './components/threeD.vue'
+// import threeD from './components/threeD.vue'
+import ListFrame from './components/ListFrame.vue'
 // import Huan from './components/huan.vue'
 // import Huan from './components/image.vue'
 
@@ -55,7 +57,8 @@ export default {
     // throttle,
     // Huan,
     // Loop
-    threeD
+    // threeD,
+    ListFrame
   }
 }
 </script>
