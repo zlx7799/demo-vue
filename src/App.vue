@@ -3,7 +3,7 @@
  * @Author: zhoulx
  * @Date: 2020-11-19 07:35:56
  * @LastEditors: zhoulx
- * @LastEditTime: 2021-08-26 16:51:38
+ * @LastEditTime: 2022-03-21 15:55:09
 -->
 <template>
   <div id="app">
@@ -18,8 +18,12 @@
     <!-- <huan></huan> -->
     <!-- <loop></loop> -->
     <!-- <threeD></threeD> -->
-    <list-frame width="1280px" :fps="24" :maxNumLimit="421" :loop="true"></list-frame>
-
+    <!-- <list-frame width="1280px" :fps="24" :maxNumLimit="421" :loop="true"></list-frame> -->
+    <!-- <test :prop="val"></test> -->
+    <!-- <button @click="clickMe">点我</button> -->
+    <!-- <recognize></recognize> -->
+    <!-- <test-canvas></test-canvas> -->
+    <!-- <lab-test></lab-test> -->
   </div>
 </template>
 
@@ -34,17 +38,22 @@
 // import modelVideo from './components/model-video.vue'
 // import throttle from './components/throttle.vue'
 // import threeD from './components/threeD.vue'
-import ListFrame from './components/ListFrame.vue'
+// import ListFrame from './components/ListFrame.vue'
 // import Huan from './components/huan.vue'
 // import Huan from './components/image.vue'
-
+// import recognize from '@/components/recognize' 
+// import test from '@/components/test' 
+// import TestCanvas from '@/components/testCanvas';
+// import labTest from '@/components/labTest.vue';
+// import {create_csv} from '@/components/create_csv'
 
 
 export default {
   name: 'App',
   data(){
     return {
-      isShow: true
+      isShow: true,
+      val: 0,
     }
   },
   components: {
@@ -58,7 +67,16 @@ export default {
     // Huan,
     // Loop
     // threeD,
-    ListFrame
+    // ListFrame
+    // recognize
+    // labTest
+    // test
+    // TestCanvas
+  },
+  methods: {
+    // clickMe(){
+    //   create_csv();
+    // }
   }
 }
 </script>
